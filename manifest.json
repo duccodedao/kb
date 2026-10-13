@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Bmass | Auto Khám bệnh",
+  "version": "3.3",
+  "description": "Tiện ích tự động hóa quy trình khám sức khỏe định kỳ trên hệ thống HIS",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bật/Tắt Khám Sức Khỏe HIS",
+    "default_icon": "icon.png"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.vnpthis.vn/*",
+        "*://yte-camau.vnpthis.vn/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["icon.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
